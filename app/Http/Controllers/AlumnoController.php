@@ -10,7 +10,7 @@ class AlumnoController extends Controller
     
     public function index(Request $request)
     {
-        $query = Alumno::where('estado', true);
+        $query = Alumno::where('estado', true)->whereHas('matricula');
 
         if ($request->has('search')) {
             $query->where('nombres', 'like', '%' . $request->search . '%');

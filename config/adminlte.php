@@ -384,7 +384,7 @@ return [
         ],
         [
             'text' => 'Matriculas',
-            'route' => 'matriculas.index',
+            'route' => 'matriculas.create',
             'icon' => 'fas fa-fw fa-book',
         ],
     ],

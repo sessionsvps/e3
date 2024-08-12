@@ -46,6 +46,15 @@
                         Nombre(s) y Apellido(s)
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Grado
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Sección
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Fecha
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Acciones
                     </th>
                 </tr>
@@ -57,19 +66,29 @@
                         {{ $alumno->id }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ $alumno->nombres }} {{ $alumno->apellidos }}
+                        {{ $alumno->nombres }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $alumno->matricula->grado->descripcion }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $alumno->matricula->seccion }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $alumno->matricula->fecha }}
                     </td>
                     <td class="px-6 py-4 text-right">
                         <div class="flex justify-center">
                             <a href="{{ route('alumnos.edit', $alumno->id) }}"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
-                            <button type="button" onclick="confirmDelete('{{ $alumno->id }}')" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-4">Eliminar</button>
+                            <button type="button" onclick="confirmDelete('{{ $alumno->id }}')"
+                                class="font-medium text-red-600 dark:text-red-500 hover:underline ml-4">Eliminar</button>
                         </div>
                     </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="3" class="px-6 py-4 text-center">
+                    <td colspan="6" class="px-6 py-4 text-center">
                         No hay registros
                     </td>
                 </tr>

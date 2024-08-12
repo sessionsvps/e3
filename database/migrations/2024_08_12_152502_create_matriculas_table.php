@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('matriculas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_alumno');
+            $table->unsignedBigInteger('id_alumno')->unique();
             $table->unsignedBigInteger('id_grado');
             $table->date('fecha');
             $table->string('seccion',1);
