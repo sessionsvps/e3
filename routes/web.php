@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AlumnoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\MatriculaController;
 use App\Http\Controllers\UnidadController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\VentaController;
@@ -24,4 +26,6 @@ Route::middleware([
     Route::resource('productos', ProductoController::class);
     Route::resource('ventas', VentaController::class);
     Route::resource('clientes', ClienteController::class);
+    Route::resource('alumnos', AlumnoController::class);
+    Route::resource('matriculas', MatriculaController::class);
 });

@@ -376,6 +376,17 @@ return [
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        ['header' => 'COLEGIO'],
+        [
+            'text' => 'Alumnos',
+            'route' => 'alumnos.index',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Matriculas',
+            'route' => 'matriculas.index',
+            'icon' => 'fas fa-fw fa-book',
+        ],
     ],
 
     /*

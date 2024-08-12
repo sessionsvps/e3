@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\ClienteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -9,4 +10,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/clientes/{nro_doc}', [ClienteController::class, 'buscarPorNroDoc']);
-
+Route::get('/alumnos/{id}', [AlumnoController::class, 'buscarPorId']);
