@@ -14,10 +14,16 @@ class Alumno extends Model
     protected $fillable = [
         'nombres',
         'apellidos',
+        'dni',
     ];
 
     public function matricula()
     {
         return $this->hasOne(Matricula::class, 'id_alumno');
+    }
+
+    public function inscripcion()
+    {
+        return $this->hasOne(Inscripcion::class, 'id_alumno');
     }
 }

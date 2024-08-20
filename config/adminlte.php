@@ -376,16 +376,16 @@ return [
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        ['header' => 'COLEGIO'],
+        ['header' => 'CURSOS'],
         [
             'text' => 'Alumnos',
             'route' => 'alumnos.index',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'Matriculas',
-            'route' => 'matriculas.create',
-            'icon' => 'fas fa-fw fa-book',
+            'text' => 'Inscripciones',
+            'route' => 'inscripciones.index',
+            'icon' => 'fas fa-fw fa-book-open-reader',
         ],
     ],
 

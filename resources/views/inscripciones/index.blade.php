@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Alumnos')
+@section('title', 'Alumnos Inscritos')
 
 @section('content_header')
     @if (session('success'))
@@ -19,16 +19,16 @@
     </div>
     @endif
     <div class="lg:mx-20 my-4">
-        <h1 class="text-2xl font-bold mb-4">Alumnos</h1>
+        <h1 class="text-2xl font-bold mb-4">Alumnos Inscritos</h1>
         <div class="flex justify-between items-center">     
-            <form action="{{ route('alumnos.index') }}" method="GET" class="flex items-center">
+            <form action="{{ route('inscripciones.index') }}" method="GET" class="flex items-center">
                 <input type="text" name="search" class="form-input px-4 py-2 h-full rounded-l-md" placeholder="Buscar alumno"
                     value="{{ request('search') }}">
                 <button type="submit" class="bg-blue-600 text-white px-3 py-2 h-full rounded-r-md hover:bg-blue-700">
                     <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
                 </button>
             </form>
-            <a href="{{ route('alumnos.create') }}"
+            <a href="{{ route('inscripciones.create') }}"
                 class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Añadir</a>
         </div>
     </div>
@@ -43,11 +43,16 @@
                         ID
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Fecha
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Nombre(s) y Apellido(s)
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        DNI
+                        Curso
                     </th>
+                    <th scope="col" class="px-6 py-3">
+                        Turno
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Acciones
@@ -55,23 +60,28 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($alumnos as $alumno)
+                @forelse ($inscripciones as $inscripcion)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $alumno->id }}
+                        {{ $inscripcion->id }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ $alumno->nombres }} {{ $alumno->apellidos }}
+                        {{ $inscripcion->fecha }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $alumno->dni }}
+                        {{ $inscripcion->alumno->nombres }} {{ $inscripcion->alumno->apellidos }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $inscripcion->curso->descripcion }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $inscripcion->turno == 'M' ? 'Mañana' : ($inscripcion->turno == 'T' ? 'Tarde' : 'No asignado') }}
                     </td>
                     <td class="px-6 py-4 text-right">
                         <div class="flex justify-center">
-                            <a href="{{ route('alumnos.edit', $alumno->id) }}"
+                            <a href="{{ route('inscripciones.edit', $inscripcion->id) }}"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
-                            <button type="button" onclick="confirmDelete('{{ $alumno->id }}')"
-                                class="font-medium text-red-600 dark:text-red-500 hover:underline ml-4">Eliminar</button>
+                            <button type="button" onclick="confirmDelete('{{ $inscripcion->id }}')" class="font-medium text-red-600 dark:text-red-500 hover:underline ml-4">Eliminar</button>
                         </div>
                     </td>
                 </tr>
@@ -86,7 +96,7 @@
         </table>
     </div>
     <div class="lg:mx-20 mt-4">
-        {{ $alumnos->links() }}
+        {{ $inscripciones->links() }}
     </div>
 @stop
 
@@ -114,11 +124,11 @@
     </script>
     <script>
         function confirmDelete(id){
-                alertify.confirm("¿Seguro que quieres eliminar el alumno?",
+                alertify.confirm("¿Seguro que quieres eliminar la inscripción?",
                 function(){
                     let form = document.createElement('form');
                     form.method = 'POST';
-                    form.action = '/alumnos/' + id;
+                    form.action = '/inscripciones/' + id;
                     form.innerHTML = '@csrf @method("DELETE")';
                     document.body.appendChild(form);
                     form.submit();

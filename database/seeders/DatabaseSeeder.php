@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             ParametroSeeder::class,
             AlumnoSeeder::class,
             GradoSeeder::class,
+            CursoSeeder::class,
         ]);
     }
 }

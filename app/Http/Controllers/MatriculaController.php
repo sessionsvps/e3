@@ -52,7 +52,7 @@ class MatriculaController extends Controller
         $matricula->save();
 
         // Redirigir a la vista de lista de matrículas con un mensaje de éxito
-        return redirect()->route('matriculas.index')->with('success', 'Matrícula registrada correctamente.');
+        return redirect()->route('alumnos.index')->with('success', 'Matrícula registrada correctamente.');
     }
 
 }

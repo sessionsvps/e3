@@ -10,4 +10,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/clientes/{nro_doc}', [ClienteController::class, 'buscarPorNroDoc']);
-Route::get('/alumnos/{id}', [AlumnoController::class, 'buscarPorId']);
+Route::get('/alumnos/{dni}', [AlumnoController::class, 'buscarPorDni']);

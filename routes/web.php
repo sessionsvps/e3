@@ -4,10 +4,12 @@ use App\Http\Controllers\AlumnoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\MatriculaController;
 use App\Http\Controllers\UnidadController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\VentaController;
+use App\Models\Inscripcion;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,4 +30,5 @@ Route::middleware([
     Route::resource('clientes', ClienteController::class);
     Route::resource('alumnos', AlumnoController::class);
     Route::resource('matriculas', MatriculaController::class);
+    Route::resource('inscripciones', InscripcionController::class);
 });
